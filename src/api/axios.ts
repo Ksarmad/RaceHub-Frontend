@@ -2,10 +2,10 @@ import axios from "axios";
 
 import { authStorage } from "../lib/auth";
 
+import { env } from "../config/env";
+
 const api = axios.create({
-  baseURL:
-    import.meta.env.VITE_API_URL ||
-    "http://localhost:5000/api",
+  baseURL: env.API_BASE_URL,
 });
 
 api.interceptors.request.use((config) => {

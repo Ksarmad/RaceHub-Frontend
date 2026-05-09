@@ -11,10 +11,7 @@ export const registerSchema = z.object({
 
   phone: z
     .string()
-    .regex(
-      /^\+\d{10,15}$/,
-      "Enter valid WhatsApp number with country code"
-    ),
+    .regex(/^[0-9]{10}$/, "Phone must be exactly 10 digits")
 });
 
 export type RegisterFormData =

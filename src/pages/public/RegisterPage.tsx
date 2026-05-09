@@ -2,9 +2,10 @@ import { useState } from "react";
 
 import { useForm } from "react-hook-form";
 
+
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 import TextInput from "../../components/form/TextInput";
 
@@ -38,9 +39,9 @@ function RegisterPage() {
   });
 
   const onSubmit = async (data: RegisterFormData) => {
-
     try {
       setLoading(true);
+
 
       const response = await api.post("/register", data);
 
@@ -48,7 +49,11 @@ function RegisterPage() {
 
       reset();
     } catch (error: any) {
-      toast.error(error?.response?.data?.message || "Something went wrong");
+      toast.error(
+        error?.response?.data?.message ||
+          error?.response?.data?.errors?.[0]?.message ||
+          "Something went wrong"
+      );
     } finally {
       setLoading(false);
     }
@@ -129,14 +134,14 @@ function RegisterPage() {
                   Tip
                 </div>
                 <div className="mt-2 text-xs text-zinc-400">
-                  Use a WhatsApp number with country code (example: +91...).
+                  Enter a 10-digit WhatsApp number.
                 </div>
               </div>
             </div>
           </div>
 
           <div className="lg:col-span-3">
-            <Toaster position="top-center" />
+
 
             <div className="rounded-3xl border border-red-500/20 bg-white/5 p-6 backdrop-blur-xl shadow-[0_0_60px_rgba(255,0,0,0.12)]">
               <div className="mb-6">
@@ -167,9 +172,10 @@ function RegisterPage() {
                   {...register("email")}
                 />
 
-                <TextInput
+                  <TextInput
                   label="WhatsApp Number"
-                  placeholder="+919999999999"
+                  placeholder="9999999999"
+
                   error={errors.phone?.message}
                   {...register("phone")}
                 />
