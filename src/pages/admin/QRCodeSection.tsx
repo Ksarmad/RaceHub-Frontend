@@ -1,7 +1,7 @@
 import { QRCodeSVG } from "qrcode.react";
 
 function QRCodeSection() {
-  const registrationUrl = `${import.meta.env.VITE_FRONTEND_URL}/register`;
+  const registrationUrl = `${import.meta.env.VITE_FRONTEND_PRODURL}/register`;
 
   const handleDownload = () => {
     const svg = document.getElementById("registration-qr");
