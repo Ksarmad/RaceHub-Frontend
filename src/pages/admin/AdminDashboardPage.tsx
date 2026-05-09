@@ -12,6 +12,8 @@ import QRCodeSection from "./QRCodeSection";
 
 import toast from "react-hot-toast";
 
+import AppShell from "../../components/layout/AppShell";
+
 function AdminDashboardPage() {
   const navigate = useNavigate();
 
@@ -56,9 +58,13 @@ function AdminDashboardPage() {
   };
 
   useEffect(() => {
+    // Intentionally load on mount
     fetchRegistrations();
     fetchTimeslots();
   }, []);
+
+
+
 
   const handleAssign = async (userId: string, timeslotId: string) => {
     try {
@@ -74,8 +80,14 @@ function AdminDashboardPage() {
       fetchRegistrations();
 
       fetchTimeslots();
-    } catch (error: any) {
-      toast.error(error?.response?.data?.message || "Assignment failed");
+    } catch (error) {
+      const message =
+        typeof error === "object" && error &&
+        "response" in error &&
+        (error as { response?: { data?: { message?: string } } }).response
+          ?.data?.message;
+
+      toast.error(message || "Assignment failed");
     } finally {
       setAssigningId(null);
     }
@@ -100,15 +112,16 @@ function AdminDashboardPage() {
   });
 
   return (
-    <div
-      className="
+    <AppShell active="admin">
+      <div
+        className="
         min-h-screen
         bg-black
         p-4
         text-white
         md:p-6
       "
-    >
+      >
       {/* Header */}
       <div
         className="
@@ -331,7 +344,8 @@ function AdminDashboardPage() {
           ))}
         </div>
       )}
-    </div>
+      </div>
+    </AppShell>
   );
 }
 

@@ -10,7 +10,10 @@ import AdminLoginPage from "../pages/admin/AdminLoginPage";
 
 import AdminDashboardPage from "../pages/admin/AdminDashboardPage";
 
+import StudentDashboardPage from "../pages/student/StudentDashboardPage";
+
 import ProtectedRoute from "./ProtectedRoute";
+
 
 function AppRoutes() {
   return (
@@ -33,6 +36,12 @@ function AppRoutes() {
           element={<AdminLoginPage />}
         />
 
+        {/* Student (UI-only) */}
+        <Route
+          path="/student/dashboard"
+          element={<StudentDashboardPage />}
+        />
+
         {/* Protected Dashboard */}
         <Route
           path="/admin/dashboard"
@@ -43,6 +52,7 @@ function AppRoutes() {
           }
         />
       </Routes>
+
     </BrowserRouter>
   );
 }
