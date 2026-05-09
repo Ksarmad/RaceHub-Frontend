@@ -14,9 +14,11 @@ import {
   registerSchema,
   type RegisterFormData,
 } from "../../validations/registerValidation";
+import { useNavigate } from "react-router-dom";
 
 function RegisterPage() {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -27,28 +29,21 @@ function RegisterPage() {
     resolver: zodResolver(registerSchema),
   });
 
-  const onSubmit = async (
-    data: RegisterFormData
-  ) => {
+  const handleNavigate: any = () => {
+    navigate("/admin/login");
+  };
+
+  const onSubmit = async (data: RegisterFormData) => {
     try {
       setLoading(true);
 
-      const response = await api.post(
-        "/register",
-        data
-      );
+      const response = await api.post("/register", data);
 
-      toast.success(
-        response.data.message ||
-          "Registration successful"
-      );
+      toast.success(response.data.message || "Registration successful");
 
       reset();
     } catch (error: any) {
-      toast.error(
-        error?.response?.data?.message ||
-          "Something went wrong"
-      );
+      toast.error(error?.response?.data?.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -57,7 +52,7 @@ function RegisterPage() {
   return (
     <>
       <Toaster position="top-center" />
-
+      
       <div
         className="
           min-h-screen
@@ -70,6 +65,23 @@ function RegisterPage() {
           py-10
         "
       >
+        <span
+        className="
+              
+              
+              rounded-3xl
+              border
+              border-red-500/20
+              bg-white/5
+              backdrop-blur-xl
+              mt-2
+              p-6
+              shadow-[0_0_50px_rgba(255,0,0,0.15)]
+          "
+      >
+        {" "}
+        <button onClick={handleNavigate}>Admin login</button>
+      </span>
         <div
           className="
             w-full
@@ -125,10 +137,7 @@ function RegisterPage() {
             </p>
           </div>
 
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="space-y-5"
-          >
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <TextInput
               label="Full Name"
               placeholder="Enter your full name"
@@ -172,9 +181,7 @@ function RegisterPage() {
                 shadow-[0_0_30px_rgba(255,0,0,0.3)]
               "
             >
-              {loading
-                ? "Registering..."
-                : "Register Now"}
+              {loading ? "Registering..." : "Register Now"}
             </button>
           </form>
         </div>
