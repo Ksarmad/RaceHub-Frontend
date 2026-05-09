@@ -10,9 +10,13 @@ import AdminLoginPage from "../pages/admin/AdminLoginPage";
 
 import AdminDashboardPage from "../pages/admin/AdminDashboardPage";
 
-import StudentDashboardPage from "../pages/student/StudentDashboardPage";
-
 import ProtectedRoute from "./ProtectedRoute";
+
+import TournamentLandingPage from "../pages/public/TournamentLandingPage";
+
+import LeaderboardAdminPage from "../pages/public/LeaderboardAdminPage";
+
+
 
 
 function AppRoutes() {
@@ -22,7 +26,7 @@ function AppRoutes() {
         {/* Public */}
         <Route
           path="/"
-          element={<RegisterPage />}
+          element={<TournamentLandingPage />}
         />
 
         <Route
@@ -30,17 +34,14 @@ function AppRoutes() {
           element={<RegisterPage />}
         />
 
+
         {/* Admin Login */}
         <Route
           path="/admin/login"
           element={<AdminLoginPage />}
         />
 
-        {/* Student (UI-only) */}
-        <Route
-          path="/student/dashboard"
-          element={<StudentDashboardPage />}
-        />
+
 
         {/* Protected Dashboard */}
         <Route
@@ -51,6 +52,16 @@ function AppRoutes() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/admin/leaderboard"
+          element={
+            <ProtectedRoute>
+              <LeaderboardAdminPage />
+            </ProtectedRoute>
+          }
+        />
+
       </Routes>
 
     </BrowserRouter>

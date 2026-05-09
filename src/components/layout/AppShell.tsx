@@ -55,11 +55,7 @@ function AppShell({
 
         <nav className="hidden items-center gap-2 md:flex">
           <NavItem to="/" label="Register" active={current === "register"} />
-          <NavItem
-            to="/student/dashboard"
-            label="Student Dashboard"
-            active={current === "student"}
-          />
+
           <NavItem
             to="/admin/login"
             label="Admin"
@@ -75,6 +71,7 @@ function AppShell({
               label="Admin"
               active={current === "admin"}
             />
+
           </div>
         </div>
       </header>

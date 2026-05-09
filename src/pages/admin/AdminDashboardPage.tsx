@@ -147,7 +147,23 @@ function AdminDashboardPage() {
           <p className="mt-2 text-zinc-400">Manage registrations</p>
         </div>
 
-        <button
+       <div className="flex gap-5">
+         <button
+          onClick={() => navigate('/admin/leaderboard')}
+          className="
+            rounded-xl
+            bg-yellow-600
+            px-5
+            py-2
+            font-medium
+            transition-all
+
+            hover:bg-yellow-500
+          "
+        >
+          Manage Leaderboard
+        </button>
+         <button
           onClick={handleLogout}
           className="
             rounded-xl
@@ -162,6 +178,8 @@ function AdminDashboardPage() {
         >
           Logout
         </button>
+       
+       </div>
       </div>
       <QRCodeSection />
       

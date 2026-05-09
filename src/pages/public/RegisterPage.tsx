@@ -84,13 +84,7 @@ function RegisterPage() {
             >
               Admin Login
             </button>
-            <button
-              onClick={() => navigate("/student/dashboard")}
-              className="rounded-xl bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-500"
-              type="button"
-            >
-              Student Dashboard
-            </button>
+
           </div>
         </div>
 
@@ -198,7 +192,8 @@ function RegisterPage() {
 
             <div className="mt-4 rounded-3xl border border-red-500/10 bg-white/5 p-5 text-sm text-zinc-400">
               <span className="font-semibold text-zinc-200">Already registered?</span>{" "}
-              Go to Student Dashboard to see your flow.
+              Keep an eye on the leaderboard once results are published.
+
             </div>
           </div>
         </div>
