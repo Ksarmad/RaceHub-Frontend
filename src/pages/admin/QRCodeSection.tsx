@@ -1,7 +1,7 @@
 import { QRCodeSVG } from "qrcode.react";
 
 function QRCodeSection() {
-  const registrationUrl = "http://localhost:5173/register";
+  const registrationUrl = `${import.meta.env.VITE_FRONTEND_URL}/register`;
 
   const handleDownload = () => {
     const svg = document.getElementById("registration-qr");
@@ -96,6 +96,15 @@ function QRCodeSection() {
         >
           Download QR
         </button>
+        <div
+          className="
+    text-center
+    text-sm
+    text-zinc-400
+  "
+        >
+          Scan using mobile camera to access registration page
+        </div>
 
         <div
           className="

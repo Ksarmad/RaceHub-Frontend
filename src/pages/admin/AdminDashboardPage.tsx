@@ -151,6 +151,7 @@ function AdminDashboardPage() {
         </button>
       </div>
       <QRCodeSection />
+      
       {/* Filters */}
       <div
         className="
