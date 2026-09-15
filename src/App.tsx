@@ -1,4 +1,5 @@
 import { Toaster } from "react-hot-toast";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import AppRoutes from "./routes";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <>
       <Toaster position="top-center" />
       <AppRoutes />
+      <SpeedInsights />
     </>
   );
 }
